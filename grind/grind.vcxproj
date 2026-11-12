@@ -33,6 +33,9 @@
     <VcpkgRoot Condition="!Exists('$(VcpkgRoot)vcpkg.exe')">C:\Program Files\Microsoft Visual Studio\18\Community\VC\vcpkg\</VcpkgRoot>
     <VcpkgEnableManifest>true</VcpkgEnableManifest>
     <VcpkgTriplet>x64-windows</VcpkgTriplet>
+    <!-- Copy dependency DLLs next to the exe with vcpkg's built-in tool instead of
+         applocal.ps1 (which looks for pwsh.exe first and logs noise when it's missing). -->
+    <VcpkgXUseBuiltInApplocalDeps>true</VcpkgXUseBuiltInApplocalDeps>
     <!-- Always use vcpkg's release libraries: the MySQL connector only ships release-CRT
          binaries, so every configuration here builds against the release CRT (/MD). -->
     <VcpkgConfiguration>Release</VcpkgConfiguration>
